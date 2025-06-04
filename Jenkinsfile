@@ -5,7 +5,7 @@ pipeline{
         stage('Docker build') {
             steps{
                 script{
-                    dockerapp = docker.build("rafaelldiass/teste:${env.BUILD_ID}", '-f ./src/Dockerfile ./src' )
+                    dockerapp = docker.build("docker push rafaelldiass/pipeguiajenkins:${env.BUILD_ID}", '-f ./src/Dockerfile ./src' )
                 }
             }
         }
