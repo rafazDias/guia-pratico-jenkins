@@ -4,12 +4,20 @@ pipeline{
     stages{
         stage('Docker build') {
             steps{
-                sh 'echo "Executando comando Docker build"'
+                script{
+                    dockerapp = docker.build("rafazias/guia-jenkins:${env.BUILD_ID}", '-f ./src/Dockerfile ./src' )
+                }
             }
         }
             stage('Push Image') {
             steps{
-                sh 'echo "Executando comando Docker push"'
+                script{
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub'){
+                        dockerapp.push('latest')
+                        docker.push("${env.BUILD_ID}")
+                    }
+                
+                }
             }
         }
 
