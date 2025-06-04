@@ -5,7 +5,7 @@ pipeline{
         stage('Docker build') {
             steps{
                 script{
-                    dockerapp = docker.build("rafazias/guia-jenkins:${env.BUILD_ID}", '-f ./src/Dockerfile ./src' )
+                    dockerapp = docker.build("rafazDias/guia-jenkins:${env.BUILD_ID}", '-f ./src/Dockerfile ./src' )
                 }
             }
         }
