@@ -30,4 +30,3 @@ spec:
     targetPort: 8088
     nodePort: 30000
   type: NodePort
-
